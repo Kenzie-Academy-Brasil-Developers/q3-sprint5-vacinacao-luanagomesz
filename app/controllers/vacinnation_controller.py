@@ -1,4 +1,5 @@
 
+from datetime import datetime
 from http import HTTPStatus
 import psycopg2
 import sqlalchemy
@@ -12,17 +13,23 @@ def get_vaccination():
     data = (Vacinne.query.all())
     serializer = [{"cpf":vacina.cpf, "first_shot_date": vacina.first_shot_date,
     "second_shot_date": vacina.second_shot_date, "health_unit_name": vacina.health_unit_name,
-    "name": vacina.name,"vaccine_name": vacina.name
+    "name": vacina.name,"vaccine_name": vacina.vaccine_name
     } for vacina in data]
     return {"data": serializer}
 
 def post_vaccination():
-    data = request.get_json()
+    res = request.get_json()
+    res["first_shot_date"] = Vacinne.createdate()["first_shot_date"]
+    res["second_shot_date"] = Vacinne.createdate()["second_shot_date"]
     
-    
-    data["first_shot_date"] = Vacinne.createdate()["first_shot_date"]
-    data["second_shot_date"] = Vacinne.createdate()["second_shot_date"]
+    data = {"cpf":res["cpf"], "first_shot_date": res["first_shot_date"],
+    "second_shot_date": res["second_shot_date"], "health_unit_name": res["health_unit_name"],
+    "name": res["name"],"vaccine_name": res["vaccine_name"]
+    }
     for i in data:
+        if type(data[i])!=str and type(data[i])!=datetime:
+            print(data[i])
+            return {"err": "Campos precisam ser string"}, HTTPStatus.BAD_REQUEST
         data[i] = str(data[i]).lower()
     
     try:
