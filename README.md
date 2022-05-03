@@ -1,7 +1,7 @@
 # Vacinação Rotas
 
 
-||
+
 |---|---|
 | Utiliza **SQLAlchemy**, **Dataclass**, **Blueprint**, **Migrations** e **Padrão Flask Factory** corretamente. ||
 | [POST] **/vaccinations**. Ao fazer requisição nessa rota passando os dados corretos retorna o status code **201** (**CREATED**) e faz a inserção dos dados normalizados no banco de dados. | 1 |
