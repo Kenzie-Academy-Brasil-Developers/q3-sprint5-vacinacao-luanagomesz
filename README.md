@@ -3,8 +3,7 @@
 
 | Rotas | |
 |---|---|
-| Utiliza **SQLAlchemy**, **Dataclass**, **Blueprint**, **Migrations** e **Padrão Flask Factory** corretamente. ||
-| [POST] **/vaccinations**. Ao fazer requisição nessa rota passando os dados corretos retorna o status code **201** (**CREATED**) e faz a inserção dos dados normalizados no banco de dados. | 1 |
+| [POST] **/vaccinations**. Ao fazer requisição nessa rota passando os dados corretos retorna o status code **201** (**CREATED**) e faz a inserção dos dados normalizados no banco de dados. | |
 | [POST] **/vaccination**. Ao fazer requisição nessa rota passando uma **string** com mais de 11 characters para a chave 'cpf', retorna o status code **400** (**BAD REQUEST**) com uma mensagem de erro | |
 | [POST] **/vaccination**. Ao fazer a requisição nessa rota com o valor de qualquer uma das chaves sendo diferente de **string**, retorna o status code **400** (**BAD REQUEST**)) com uma mensagem de erro  | |
 | [POST] **/vaccination**. Ao fazer a requisição nessa rota faltando qualquer uma das chaves (**cpf**, **name**, **health_unit_name** e **vaccine_name**), retorna o status code **400** (**BAD REQUEST**) com uma mensagem de erro | |
